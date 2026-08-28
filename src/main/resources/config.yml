@@ -1,0 +1,15 @@
+# ============================================================
+#   QATest — otomatik acik arama botu ayarlari
+# ============================================================
+
+# Genel exploit taramasinin uygulanacagi ozel silah kodlari.
+# SinifSistemi'nin /silah liste ciktisindaki kodlar.
+silahlar:
+  - kanli_savas_baltasi
+
+# Ruby datapack testi. ore-blok bos birakilirsa Ruby testi atlanir.
+ruby:
+  # Ruby cevherinin gercekte kullandigi blok turu (orn. DEEPSLATE_EMERALD_ORE)
+  ore-blok: ""
+  # Duşen esyanin adinda gecen benzersiz kelime
+  toz-adi: "Toz"
