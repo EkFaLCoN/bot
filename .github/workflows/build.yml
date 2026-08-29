@@ -32,3 +32,12 @@ jobs:
 
       - name: Derle
         run: |
+          G=$(find . -name 'build.gradle.kts' -not -path './.git/*' | head -1)
+          if [ -z "$G" ]; then echo "build.gradle.kts bulunamadi"; exit 1; fi
+          cd "$(dirname "$G")"
+          gradle build --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: QATest
+          path: '**/build/libs/*.jar'
