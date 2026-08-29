@@ -10,20 +10,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: JDK 25 kur
-        uses: actions/setup-java@v4
+      - name: Ne var
+        run: ls -la
+
+      - name: Zipi ac
+        run: |
+          for z in *.zip; do
+            [ -e "$z" ] || continue
+            echo "aciliyor: $z"
+            unzip -o "$z"
+          done
+          echo "--- build dosyasi nerede ---"
+          find . -name 'build.gradle.kts' -o -name pom.xml | grep -v '/.git/' || echo "YOK"
+
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '25'
 
-      - name: Gradle kur
-        uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v4
 
       - name: Derle
-        run: gradle build --no-daemon
-
-      - name: Jar yukle
-        uses: actions/upload-artifact@v4
-        with:
-          name: QATest
-          path: build/libs/*.jar
+        run: |
